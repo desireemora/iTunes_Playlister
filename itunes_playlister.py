@@ -15,6 +15,7 @@ class track:
 
 class playlist:
         songs = []
+        
 songs = list()
 direc = "/Users/DesireeMora/Music/iTunes/iTunes_Music_Library.xml"
 
@@ -32,13 +33,41 @@ count = 1
 for k in key:
     print(k.text)
 
-    track = track();
-    objs.append()
-    if count == 1:
+    track = track()
+
+    #Track ID/Key
+    if count == 2:
+
+    #Year
+    if count == 16:
+
+    #Persistant ID
+    if count == 28:
+
+    #Nme
+    if count == 42:
+
+    #Artist
+    if count == 44:
+
+    #Composer
+    if count == 48:
+
+    #Album
+    if count == 50:
+
+    #Genre
+    if count == 52:
+
+    #Location
+    if count == 62:
+        
         
 
     #Every 62 lines is a new song
     if count == 62:
         count = 0
+        songs.append(track)
+        
 
     count+=1
