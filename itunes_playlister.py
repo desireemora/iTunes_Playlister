@@ -82,6 +82,8 @@ for index,k in enumerate(key):
         cur_location = key[index+1].text
         print("Location: ",cur_location)
 
-    if key[index+1].text == "Track ID" & !key.end:
-        print("*****************NEW TRACK****************")
+    #Makes sure that I dont access an index that does not exist
+    if len(key) <= index:
+        if key[index+1].text == "Track ID":
+            print("*****************NEW TRACK****************")
         
