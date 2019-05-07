@@ -15,7 +15,7 @@ class tracks:
 
 class playlist:
         songs = []
-        
+
 songs = {}
 direc = "/Users/DesireeMora/Music/iTunes/iTunes_Music_Library.xml"
 
@@ -29,52 +29,59 @@ dom = ElementTree.parse(full_file) # parse an open file
 key = dom.findall('dict/dict/dict/')
 inte = dom.findall('dict/integer')
 
-count = 1
+count = 0
 total_songs = 0
 
 track = tracks()
 
-for k in key:
-    #print(k.text)
-    
-    #Track ID/Key
-    if count == 2:
-        track.key = k.text
-    #Year
-    if count == 16:
-        track.year = k.text
-    #Persistant ID
-    if count == 28:
-        track.persistent_ID = k.text
-    #Name
-    if count == 42:
-        track.name = k.text
-    #Artist
-    if count == 44:
-        track.artist = k.text
-    #Composer
-    if count == 48:
-        track.composer = k.text
-    #Album
-    if count == 50:
-        track.album = k.text
-    #Genre
-    if count == 52:
-        track.genre = k.text
-    #Location
-    if count == 62:
-        track.location = k.text
-        
-
-    #Every 62 lines is a new song
-    if count == 62:
-        count = 0
-        total_songs = total_songs + 1
-        #print(track.key)
-        songs[track.key]= track
-        #print(total_songs)
-        
-        
-
+for index,k in enumerate(key):
     count+=1
-    print(count)
+
+    #Track ID/Key
+    if k.text == "Track ID":
+        cur_key = key[index+1].text
+        print("Track ID: ",cur_key)
+
+    #Year
+    if k.text == "Year":
+        cur_year = key[index+1].text
+        print("Year: ",cur_year)
+
+    #Persistent ID
+    if k.text == "Persistant ID":
+        cur_p_id = key[index+1].text
+        print("Persistant ID: ",cur_p_id)
+
+    #Song Name
+    if k.text == "Name":
+        cur_name = key[index+1].text
+        print("Name: ",cur_name)
+
+    #Artist Name
+    if k.text == "Artist":
+        cur_artist = key[index+1].text
+        print("Artist: ",cur_artist)
+
+    #composer(s) Name
+    if k.text == "Composer":
+        cur_composer = key[index+1].text
+        print("Composer: ",cur_composer)
+
+    #Album Name
+    if k.text == "Album":
+        cur_album = key[index+1].text
+        print("Album: ",cur_album)
+
+    #Genre
+    if k.text == "Genre":
+        cur_genre = key[index+1].text
+        print("Genre: ",cur_genre)
+
+    #Location (File Path)
+    if k.text == "Location":
+        cur_location = key[index+1].text
+        print("Location: ",cur_location)
+
+    if key[index+1].text == "Track ID" & !key.end:
+        print("*****************NEW TRACK****************")
+        
