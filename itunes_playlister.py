@@ -1,6 +1,7 @@
 from xml.dom.minidom import parse, parseString
 from xml.etree import ElementTree
 import os
+import sys
 
 class tracks:
     key = 0
@@ -29,7 +30,7 @@ dom = ElementTree.parse(full_file) # parse an open file
 
 key = dom.findall('dict/dict/dict/')
 inte = dom.findall('dict/integer')
-playlist = dom.findall('dict/dict/dict/')
+playlist = dom.findall('dict/array/dict/')
 
 count = 0
 total_songs = 0
@@ -86,30 +87,33 @@ for index,k in enumerate(key):
         #print("Location: ",cur_location)
 
     #Makes sure that I dont access an index that does not exist
-    if len(key) <= index:
-        if key[index+1].text == "Track ID":
-            
-            dic_of_songs[cur_key] = tracks()
-            dic_of_songs[cur_key].key = cur_key
-            dic_of_songs[cur_key].year = cur_year
-            dic_of_songs[cur_key].pid = cur_pid
-            dic_of_songs[cur_key].name = cur_name
-            dic_of_songs[cur_key].artist = cur_artist
-            dic_of_songs[cur_key].composer = cur_composer
-            dic_of_songs[cur_key].album = cur_album
-            if cur_genre == None:
-                cur_genre = "None"
-            dic_of_songs[cur_key].genre = cur_genre
-            dic_of_songs[cur_key].location = cur_location
-
-            print("Object Key & Name: ",dic_of_songs[cur_key].key," ",dic_of_songs[cur_key].name)
-            print("Object Artist and Genre: ",dic_of_songs[cur_key].artist," ",dic_of_songs[cur_key].genre)
-            print()
-            print("*****************NEW TRACK****************")
+    #if len(key) <= index:
+##    if key[index+1].text == "Track ID":
+##        
+##        dic_of_songs[cur_key] = tracks()
+##        dic_of_songs[cur_key].key = cur_key
+##        dic_of_songs[cur_key].year = cur_year
+##        dic_of_songs[cur_key].pid = cur_pid
+##        dic_of_songs[cur_key].name = cur_name
+##        dic_of_songs[cur_key].artist = cur_artist
+##        dic_of_songs[cur_key].composer = cur_composer
+##        dic_of_songs[cur_key].album = cur_album
+##        if cur_genre == None:
+##            cur_genre = "None"
+##        dic_of_songs[cur_key].genre = cur_genre
+##        dic_of_songs[cur_key].location = cur_location
+##
+##        print("Object Key & Name: ",dic_of_songs[cur_key].key," ",dic_of_songs[cur_key].name)
+##        print("Object Artist and Genre: ",dic_of_songs[cur_key].artist," ",dic_of_songs[cur_key].genre)
+##        print()
+##        print("*****************NEW TRACK****************")
 
 
 for p in playlist:
-    print(p.text)
+    p2 = p.text
+    if p2 != None:
+        p2=p2.encode('unicode-escape').decode('utf-8')
+    print(p2)
 
 
         
