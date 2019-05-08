@@ -16,7 +16,10 @@ class tracks:
     location= "None"
 
 class playlist:
-        songs = []
+    #Playlist ID is the key
+    key = 0
+    pid = "None"  
+    songs = []
 
 dic_of_songs = {}
 direc = "/Users/DesireeMora/Music/iTunes/iTunes_Music_Library.xml"
