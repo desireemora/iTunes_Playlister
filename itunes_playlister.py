@@ -1,5 +1,6 @@
 from xml.dom.minidom import parse, parseString
 from xml.etree import ElementTree
+import xml.etree.ElementTree as ET
 import os
 import sys
 
@@ -34,6 +35,7 @@ dom = ElementTree.parse(full_file) # parse an open file
 key = dom.findall('dict/dict/dict/')
 inte = dom.findall('dict/integer')
 playlist = dom.findall('dict/array/dict/')
+playlist_tracks = dom.findall('dict/array/dict/array/dict/')
 
 count = 0
 total_songs = 0
@@ -112,11 +114,20 @@ for index,k in enumerate(key):
 ##        print("*****************NEW TRACK****************")
 
 
-for p in playlist:
-    p2 = p.text
-    if p2 != None:
-        p2=p2.encode('unicode-escape').decode('utf-8')
-    print(p2)
-
-
+##for p in playlist:
+##    p2 = p.text
+##    if p2 != None:
+##        p2=p2.encode('unicode-escape').decode('utf-8')
+##
+##    if p2 == "All Items":
+##        inner_tracks = dom.findall(p+'array/dict/')
+##        for t in inner_tracks:
+##            print(t)
+##    print(p2)
         
+##tree = ET.parse(file_name)
+##root = tree.getroot()
+##tester = root.findall("./dict/array/dict/")
+##for t in tester:
+##    print(t.text)
+##print(root[0][16].text)
