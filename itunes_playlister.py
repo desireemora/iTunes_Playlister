@@ -131,3 +131,5 @@ for index,k in enumerate(key):
 ##for t in tester:
 ##    print(t.text)
 ##print(root[0][16].text)
+
+test_var = "This is just a test"
